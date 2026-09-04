@@ -1,0 +1,336 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap');
+
+:root {
+  --paper: #FBF3E7;
+  --paper-dim: #F3E7D4;
+  --card: #FFFFFF;
+  --ink: #2B3350;
+  --ink-soft: #5B6482;
+  --coral: #FF6B57;
+  --coral-dark: #DE4E3B;
+  --gold: #F0A93B;
+  --sage: #6FA98A;
+  --sage-dark: #4F8068;
+
+  --display: 'Caveat', cursive;
+  --body: 'Work Sans', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--body);
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 15% 0%, rgba(255,107,87,0.06) 0%, transparent 45%),
+    radial-gradient(circle at 85% 100%, rgba(111,169,138,0.08) 0%, transparent 45%),
+    var(--paper);
+  background-attachment: fixed;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+.wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 32px 20px 80px;
+  position: relative;
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--coral-dark);
+  margin: 0 0 6px;
+}
+
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 8px;
+  line-height: 1.15;
+}
+
+h1 { font-size: 46px; }
+h2 { font-size: 32px; }
+h3 { font-size: 24px; }
+
+p { color: var(--ink-soft); margin: 0 0 16px; }
+
+.subtitle {
+  color: var(--ink-soft);
+  font-size: 17px;
+  margin-bottom: 28px;
+}
+
+/* --- Card panel --- */
+.card {
+  background: var(--card);
+  color: var(--ink);
+  border-radius: var(--radius);
+  padding: 28px;
+  margin-bottom: 20px;
+  position: relative;
+  box-shadow: 0 10px 0 rgba(43,51,80,0.06), 0 10px 28px rgba(43,51,80,0.1);
+}
+
+.card .card-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  opacity: 0.7;
+}
+
+/* --- Buttons --- */
+.btn {
+  font-family: var(--body);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 13px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.btn:active { transform: scale(0.97); }
+.btn:focus-visible { outline: 3px solid var(--sage); outline-offset: 2px; }
+
+.btn-primary {
+  background: var(--coral);
+  color: #fff;
+  box-shadow: 0 4px 0 var(--coral-dark);
+}
+.btn-primary:hover { box-shadow: 0 6px 0 var(--coral-dark); transform: translateY(-2px); }
+.btn-primary:disabled {
+  background: #d8cdb8;
+  box-shadow: 0 4px 0 #b8ac93;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--sage-dark);
+  border: 2px solid var(--sage);
+}
+
+.btn-block { width: 100%; justify-content: center; }
+
+/* --- Form elements --- */
+label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+}
+
+input[type="text"], input[type="email"], textarea {
+  width: 100%;
+  font-family: var(--body);
+  font-size: 16px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 2px solid rgba(43,51,80,0.12);
+  background: var(--paper);
+  color: var(--ink);
+  margin-bottom: 18px;
+}
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--coral);
+}
+
+textarea { resize: vertical; min-height: 90px; }
+
+/* --- Quiz options --- */
+.option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: var(--paper);
+  border: 2px solid rgba(43,51,80,0.12);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  font-family: var(--body);
+  font-size: 15px;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+.option:hover { border-color: var(--sage); background: #eef6f1; }
+.option.selected { border-color: var(--coral); background: #fdece9; font-weight: 600; }
+.option.correct { border-color: var(--sage-dark); background: #e4f3ea; }
+.option.incorrect { border-color: var(--coral); background: #fbe2de; }
+.option:disabled { cursor: default; }
+
+/* --- Progress --- */
+.progress-track {
+  height: 6px;
+  background: rgba(43,51,80,0.1);
+  border-radius: 4px;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--gold);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+/* --- Grade badge --- */
+.grade-badge {
+  width: 140px;
+  height: 140px;
+  margin: 8px auto 20px;
+  border-radius: 50%;
+  border: 4px solid var(--coral);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-6deg);
+  background: #fff;
+  box-shadow: 0 6px 0 rgba(255,107,87,0.25);
+}
+.grade-badge .grade-letter {
+  font-family: var(--display);
+  font-size: 52px;
+  font-weight: 700;
+  color: var(--coral);
+  line-height: 1;
+}
+.grade-badge .grade-score {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+
+/* --- Photo preview --- */
+.photo-drop {
+  border: 2px dashed rgba(43,51,80,0.2);
+  border-radius: 8px;
+  padding: 24px;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 18px;
+  background: var(--paper);
+}
+.photo-drop img {
+  max-width: 100%;
+  max-height: 220px;
+  border-radius: 6px;
+  display: block;
+  margin: 0 auto;
+}
+.photo-drop .hint { font-family: var(--mono); font-size: 12px; color: var(--ink-soft); }
+
+/* --- Chip / tag --- */
+.chip {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--sage);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+.chip.winner { background: var(--gold); color: var(--ink); }
+
+/* --- Admin list --- */
+.roster-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 4px;
+  border-bottom: 1px dashed rgba(43,51,80,0.14);
+  cursor: pointer;
+  color: var(--ink);
+  text-decoration: none;
+}
+.roster-row:hover { background: rgba(255,107,87,0.06); }
+.roster-row:last-child { border-bottom: none; }
+.roster-name { font-weight: 600; }
+.roster-score { font-family: var(--mono); font-size: 13px; color: var(--ink-soft); }
+
+/* --- Back link --- */
+.back-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--sage-dark);
+  text-decoration: none;
+  margin-bottom: 24px;
+}
+.back-home:hover { color: var(--coral-dark); }
+
+/* --- Utility --- */
+.center { text-align: center; }
+.mt-8 { margin-top: 8px; }
+.mt-24 { margin-top: 24px; }
+.small { font-size: 13px; }
+.hidden { display: none !important; }
+
+.footer-note {
+  text-align: center;
+  color: rgba(43,51,80,0.4);
+  font-family: var(--mono);
+  font-size: 11px;
+  margin-top: 40px;
+}
+
+/* --- Scroll reveal (shared with homepage) --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px) scale(0.96);
+  transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1);
+}
+.reveal.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+
+.reveal-group > * {
+  opacity: 0;
+  transform: translateY(60px) scale(0.85);
+  transition: opacity 0.7s cubic-bezier(0.34,1.56,0.64,1), transform 0.7s cubic-bezier(0.34,1.56,0.64,1);
+}
+.reveal-group.is-visible > * { opacity: 1; transform: translateY(0) scale(1); }
+.reveal-group > *:nth-child(1) { transition-delay: 0.05s; }
+.reveal-group > *:nth-child(2) { transition-delay: 0.18s; }
+.reveal-group > *:nth-child(3) { transition-delay: 0.31s; }
+.reveal-group > *:nth-child(4) { transition-delay: 0.44s; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+  .reveal, .reveal-group > * { opacity: 1 !important; transform: none !important; }
+}
+
+/* Confetti canvas */
+#confetti-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+}
